@@ -1,0 +1,13 @@
+import { Router } from 'express';
+
+import authMiddleware from './app/middlewares/auth';
+import HealthDatabaseController from './app/controllers/HealthDatabaseController';
+import HealthStatusController from './app/controllers/HealthStatusController';
+
+const routes = new Router();
+
+routes.use(authMiddleware);
+routes.get('/health/server', HealthStatusController.index);
+routes.get('/health/database', HealthDatabaseController.index);
+
+export default routes;

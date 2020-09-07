@@ -1,0 +1,22 @@
+import Sequelize, { Model } from 'sequelize';
+import bcrypt from 'bcryptjs';
+
+class <%= props.name %> extends Model {
+  static init(sequelize) {
+    super.init(
+      {
+        /*
+        propertyName: Sequelize.TYPE,
+        */
+      },
+      {
+        sequelize,
+      }
+    );
+
+
+    return this;
+  }
+}
+
+export default <%= props.name %>;
