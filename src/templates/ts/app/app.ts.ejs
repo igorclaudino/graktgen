@@ -1,0 +1,35 @@
+// import './bootstrap'
+import { createConnection } from 'typeorm';
+import * as express from 'express';
+import { Application } from 'express';
+import * as cors from 'cors';
+
+import routes from './routes';
+
+class App {
+    public server: Application;
+
+    constructor() {
+      this.server = express();
+      this.database();
+      this.middlewares();
+      this.routes();
+    }
+
+    database() {
+      createConnection().then(async (connection) => {
+        console.log('Connected to Database');
+      }).catch((error) => console.log(error));
+    }
+
+    middlewares() {
+      this.server.use(cors());
+      this.server.use(express.json());
+    }
+
+    routes() {
+      this.server.use(routes);
+    }
+}
+
+export default new App().server;

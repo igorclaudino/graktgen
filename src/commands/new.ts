@@ -1,6 +1,4 @@
-
 import { GluegunCommand } from 'gluegun'
-
 
 const command: GluegunCommand = {
     name: 'new',
@@ -33,8 +31,8 @@ const command: GluegunCommand = {
 
         checkParam.stopAndPersist({ symbol: '👍', text: 'Everything is okay' })
 
-        const dependenciesCommand = `cd ${name} && yarn add ${dependencies.join(" ")}`
-        const devDependenciesCommand = `cd ${name} && yarn add -D ${devDependencies.join(" ")}`
+        const dependenciesCommand = `cd ${name} && yarn add ${dependencies[parameters.options.ts ? 'ts' : 'js'].join(" ")}`
+        const devDependenciesCommand = `cd ${name} && yarn add -D ${devDependencies[parameters.options.ts ? 'ts' : 'js'].join(" ")}`
 
         let spinner = toolbox.print.spin('Installing dependencies')
 

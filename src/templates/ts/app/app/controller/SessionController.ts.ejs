@@ -1,0 +1,39 @@
+import {
+  Request, Response,
+} from 'express';
+import * as jwt from 'jsonwebtoken';
+import { getRepository, Repository } from 'typeorm';
+
+import authConfig from '../../config/auth';
+import User from '../entity/User';
+
+class SessionController {
+  async store(req: Request, res: Response) {
+    const userRepository: Repository<User> = getRepository(User);
+    const { email, password } = req.body;
+
+    const user = await userRepository.findOne({
+      where: { email },
+    });
+
+    if (!user) {
+      return res.status(401).json({ error: 'User not found!' });
+    }
+
+    if (!(await user.checkPassword(password))) {
+      return res.status(401).json({ error: 'Password does not match!' });
+    }
+
+    return res.json({
+      user: {
+        id: user.id,
+        email: user.email,
+      },
+      token: jwt.sign({ id: user.id }, authConfig.secret, {
+        expiresIn: authConfig.expiresIn,
+      }),
+    });
+  }
+}
+
+export default new SessionController();

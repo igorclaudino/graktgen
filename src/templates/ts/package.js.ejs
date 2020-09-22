@@ -1,0 +1,37 @@
+{
+   "name": "<%= props.name %>",
+   "version": "0.0.1",
+   "description": "Awesome project developed with Graktgen.",
+   "devDependencies": {
+      "@types/bcryptjs": "^2.4.2",
+      "@types/cors": "^2.8.7",
+      "@types/express": "^4.17.8",
+      "@types/jsonwebtoken": "^8.5.0",
+      "@types/node": "^8.0.29",
+      "@typescript-eslint/eslint-plugin": "^4.1.1",
+      "@typescript-eslint/parser": "^4.1.1",
+      "eslint": "^7.9.0",
+      "eslint-config-airbnb-base": "^14.2.0",
+      "eslint-plugin-import": "^2.22.0",
+      "eslint-plugin-import-helpers": "^1.1.0",
+      "prettier": "^2.1.2",
+      "ts-node": "3.3.0",
+      "ts-node-dev": "^1.0.0-pre.62",
+      "typescript": "3.3.3333"
+   },
+   "dependencies": {
+      "bcryptjs": "^2.4.3",
+      "body-parser": "^1.18.1",
+      "cors": "^2.8.5",
+      "dotenv": "^8.2.0",
+      "express": "^4.15.4",
+      "jsonwebtoken": "^8.5.1",
+      "pg": "^7.3.0",
+      "reflect-metadata": "^0.1.10",
+      "typeorm": "0.2.26"
+   },
+   "scripts": {
+      "start": "ts-node src/server.ts",
+      "dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --ignore-watch node_modules --no-notify src/server.ts"
+   }
+}
