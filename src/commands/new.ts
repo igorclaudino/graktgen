@@ -3,6 +3,7 @@ import { GluegunCommand } from 'gluegun'
 const command: GluegunCommand = {
     name: 'new',
     description: 'Create the initial structure',
+    alias: 'n',
     run: async toolbox => {
         const {
             createConfig,

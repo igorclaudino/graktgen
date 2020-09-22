@@ -1,3 +1,8 @@
 # Command Reference for graktgen
 
-TODO: Add your command reference here
+## new
+```shell
+$ npx graktgen new <project-name>
+$ npx graktgen new <project-name> --ts (if typescript)
+```
+
